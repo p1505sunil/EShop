@@ -45,7 +45,7 @@ namespace Microsoft.eShopWeb.Infrastructure.Data
                 .HasMaxLength(18)
                 .IsRequired();
 
-            builder.Property(a => a.Street)
+            builder.Property(a => a.Street) 
                 .HasMaxLength(180)
                 .IsRequired();
 
