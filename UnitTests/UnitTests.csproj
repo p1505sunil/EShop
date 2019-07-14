@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <Folder Include="ApplicationCore\ENtities\" />
-    <Folder Include="ApplicationCore\Specifications\" />
     <Folder Include="ApplicationCore\Services\" />
   </ItemGroup>
 
