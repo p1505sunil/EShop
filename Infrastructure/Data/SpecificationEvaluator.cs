@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Microsoft.eShopWeb.Infrastructure.Data
+namespace Microsoft.eShopWeb.Infrastructure.Data 
 {
     public class SpecificationEvaluator<T> where T : BaseEntity
     {
