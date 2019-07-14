@@ -138,7 +138,7 @@ namespace Microsoft.eShopWeb.Web.Controllers
             }
 
             var hasPassword = await _userManager.HasPasswordAsync(user);
-            if (!hasPassword)
+            if (!hasPassword)   
             {
                 return RedirectToAction(nameof(SetPassword)); 
             }
