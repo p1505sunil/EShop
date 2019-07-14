@@ -1,4 +1,5 @@
-﻿using Infrastructure.Identity;
+﻿using ApplicationCore.Interfaces;
+using Infrastructure.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -13,15 +14,18 @@ namespace Web.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        
+        private readonly IBasketService _basketService;
+
         public AccountController(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager
+            SignInManager<ApplicationUser> signInManager,
+            IBasketService basketService
            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            
+            _basketService = basketService;
+
         }
 
         [HttpPost]
@@ -97,5 +101,55 @@ namespace Web.Controllers
 
             return View();
         }
+
+        // POST: /Account/SignIn
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SignIn(LoginViewModel model, string returnUrl = null)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            ViewData["ReturnUrl"] = returnUrl;
+
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+            if (result.RequiresTwoFactor)
+            {
+                return RedirectToAction(nameof(LoginWith2fa), new { returnUrl, model.RememberMe });
+            }
+            if (result.Succeeded)
+            {
+                string anonymousBasketId = Request.Cookies[Constants.BASKET_COOKIENAME];
+                if (!String.IsNullOrEmpty(anonymousBasketId))
+                {
+                    await _basketService.TransferBasketAsync(anonymousBasketId, model.Email);
+                    Response.Cookies.Delete(Constants.BASKET_COOKIENAME);
+                }
+                return RedirectToLocal(returnUrl);
+            }
+            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+            return View(model);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> LoginWith2fa(bool rememberMe, string returnUrl = null)
+        {
+            // Ensure the user has gone through the username & password screen first
+            var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
+
+            if (user == null)
+            {
+                throw new ApplicationException($"Unable to load two-factor authentication user.");
+            }
+
+            var model = new LoginWith2faViewModel { RememberMe = rememberMe };
+            ViewData["ReturnUrl"] = returnUrl;
+
+            return View(model);
+        }
+
     }
 }
