@@ -8,7 +8,7 @@ namespace Microsoft.eShopWeb.ApplicationCore.Specifications
             : base(o => o.BuyerId == buyerId)
         {
             AddInclude(o => o.OrderItems);
-            AddInclude($"{nameof(Order.OrderItems)}.{nameof(OrderItem.ItemOrdered)}");
+            AddInclude($"{nameof(Order.OrderItems)}.{nameof(OrderItem.ItemOrdered)}"); 
         }
     }
 }
