@@ -1,22 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.757
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{E2DFAEB3-23E7-4AFD-9E86-8CA76597E404}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{E2DFAEB3-23E7-4AFD-9E86-8CA76597E404}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FE71C102-ECF4-4DCC-AD8A-47959BECFC10}"
 	ProjectSection(SolutionItems) = preProject
-		C:\Users\Sunil\Desktop\docker-compose.yml = C:\Users\Sunil\Desktop\docker-compose.yml
+		..\Users\Sunil\Desktop\docker-compose.yml = ..\Users\Sunil\Desktop\docker-compose.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E52FDD0F-D319-493F-B33C-B837225FFABF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A606C985-C715-4D03-96AA-EC802C9EABF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{F6AE160B-FC06-4FE2-8E4F-85F6797AB379}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{F6AE160B-FC06-4FE2-8E4F-85F6797AB379}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationCore", "ApplicationCore\ApplicationCore.csproj", "{C8E4ED53-63A6-484F-95F5-5DAFEAD72C0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationCore", "ApplicationCore\ApplicationCore.csproj", "{C8E4ED53-63A6-484F-95F5-5DAFEAD72C0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{6A8EBE44-9B02-4D61-8A74-2069934E9175}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,10 @@ Global
 		{C8E4ED53-63A6-484F-95F5-5DAFEAD72C0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8E4ED53-63A6-484F-95F5-5DAFEAD72C0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8E4ED53-63A6-484F-95F5-5DAFEAD72C0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A8EBE44-9B02-4D61-8A74-2069934E9175}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A8EBE44-9B02-4D61-8A74-2069934E9175}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A8EBE44-9B02-4D61-8A74-2069934E9175}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A8EBE44-9B02-4D61-8A74-2069934E9175}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +50,7 @@ Global
 		{E2DFAEB3-23E7-4AFD-9E86-8CA76597E404} = {E52FDD0F-D319-493F-B33C-B837225FFABF}
 		{F6AE160B-FC06-4FE2-8E4F-85F6797AB379} = {E52FDD0F-D319-493F-B33C-B837225FFABF}
 		{C8E4ED53-63A6-484F-95F5-5DAFEAD72C0E} = {E52FDD0F-D319-493F-B33C-B837225FFABF}
+		{6A8EBE44-9B02-4D61-8A74-2069934E9175} = {A606C985-C715-4D03-96AA-EC802C9EABF0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {56F5CCD5-56AC-4EC7-BA57-03BE0160EE06}
