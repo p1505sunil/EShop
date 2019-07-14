@@ -140,7 +140,7 @@ namespace Microsoft.eShopWeb.Web.Controllers
             var hasPassword = await _userManager.HasPasswordAsync(user);
             if (!hasPassword)
             {
-                return RedirectToAction(nameof(SetPassword));
+                return RedirectToAction(nameof(SetPassword)); 
             }
 
             var model = new ChangePasswordViewModel { StatusMessage = StatusMessage };
