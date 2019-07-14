@@ -66,7 +66,7 @@ namespace Microsoft.eShopWeb.Infrastructure.Data
                 new CatalogBrand() { Brand = "Other" }
             };
         }
-
+          
         static IEnumerable<CatalogType> GetPreconfiguredCatalogTypes()
         {
             return new List<CatalogType>()
