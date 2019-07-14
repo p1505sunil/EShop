@@ -19,7 +19,7 @@ namespace Web.Controllers
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            IBasketService basketService
+            IBasketService basketService   
            )
         {
             _userManager = userManager;
