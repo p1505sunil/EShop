@@ -63,5 +63,39 @@ namespace Web.Controllers
                 ModelState.AddModelError("", error.Description);
             }
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return RedirectToPage("/Index");
+            }
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                throw new ApplicationException($"Unable to load user with ID '{userId}'.");
+            }
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+            return View(result.Succeeded ? "ConfirmEmail" : "Error");
+        }
+
+        // GET: /Account/SignIn 
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> SignIn(string returnUrl = null)
+        {
+            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+
+            ViewData["ReturnUrl"] = returnUrl;
+            if (!String.IsNullOrEmpty(returnUrl) &&
+                returnUrl.IndexOf("checkout", StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                ViewData["ReturnUrl"] = "/Basket/Index";
+            }
+
+            return View();
+        }
     }
 }
